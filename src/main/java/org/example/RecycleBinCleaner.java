@@ -21,7 +21,6 @@ public class RecycleBinCleaner {
                     }
                 }
             }
-
             if(folder.isDirectory() && Objects.requireNonNull(folder.list()).length == 0) {
                 folder.delete();
             }
