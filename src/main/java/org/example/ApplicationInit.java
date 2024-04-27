@@ -18,9 +18,11 @@ class ApplicationInit extends JFrame {
         JLabel title = new JLabel("ONE TAP");
         JLabel description = new JLabel("  A simple tool for clearing your systems cache/temporary files or trash files");
         JSeparator separator = new JSeparator();
+        JSeparator separator2 = new JSeparator();
         JButton tempclear = new JButton("Temp");
         JButton binclear = new JButton("Recycle bin");
         JLabel LabelNotify = new JLabel();
+        JLabel info=new JLabel("@PrethamMuthappa");
         JLabel spacer = new JLabel();
         JLabel spacer2 = new JLabel();
         JLabel spacer3 = new JLabel();
@@ -121,9 +123,11 @@ class ApplicationInit extends JFrame {
         panel.add(binclear, "w 50,h 40, center,wrap");
         panel.add(LabelNotify, "center,wrap");
         panel.add(jFileChooser,"center,growx,wrap");
+        panel.add(separator2,"center,growx,wrap");
+        panel.add(info,"center,wrap");
 
         frame.pack();
-        frame.setSize(500, 500);
+        frame.setSize(550, 600);
         frame.setVisible(true);
 
     }
