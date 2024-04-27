@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 
+
 class ApplicationInit extends JFrame {
 
     static void runs() {
@@ -26,24 +27,32 @@ class ApplicationInit extends JFrame {
         JProgressBar progressBar = new JProgressBar();
         progressBar.setValue(0);
         progressBar.setBorderPainted(true);
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("About");
+        menuBar.add(menu);
 
-     JMenuBar menuBar = new JMenuBar();
+        String currentdirs=System.getProperty("user.home");
+        String relatives=".local/share/Trash/";
+        File files=new File(currentdirs+File.separator+relatives);
+        JFileChooser jFileChooser=new JFileChooser(files);
+        jFileChooser.ensureFileIsVisible(files);
+        jFileChooser.setDragEnabled(true);
+        jFileChooser.setFileHidingEnabled(false);
 
-     JMenu menu = new JMenu("About");
-     menuBar.add(menu);
+        // Button to redirect to my github account / repo for this project
+        JButton linkButton = new JButton("Github");
+        linkButton.addActionListener(e -> {
+            try {
+                Desktop.getDesktop().browse(URI.create("https://github.com/PrethamMuthappa/SwingMigLayoutApp"));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            System.out.println("clicked");
+        });
 
-     JButton button=new JButton("Github");
-     button.addActionListener(e -> {
-         try {
-             Desktop.getDesktop().browse(URI.create("https://github.com/PrethamMuthappa/SwingMigLayoutApp"));
-         } catch (IOException ex) {
-             throw new RuntimeException(ex);
-         }
-         System.out.println("clicked");
-     });
-
-     JMenuItem jMenuItem=new JMenuItem(button.getAction());
-     menu.add(jMenuItem);
+        JMenuItem jMenuItem = new JMenuItem("GITHUB");
+        jMenuItem.addActionListener(linkButton.getActionListeners()[0]);
+        menu.add(jMenuItem);
 
         String os = System.getProperty("os.name").toLowerCase();
         System.out.println(os);
@@ -99,18 +108,19 @@ class ApplicationInit extends JFrame {
 
         frame.add(panel);
         frame.setResizable(false);
-        panel.add(menuBar,"left,wrap");
+        panel.add(menuBar, "left,wrap");
         panel.add(title, "center,wrap");
         panel.add(separator, "center,growx,wrap");
         panel.add(description, "center,wrap");
         panel.add(LabelNotify, "center,wrap");
         panel.add(spacer, "h 30, wrap");
-        panel.add(progressBar, "h 10, w 50 ,center,growx,wrap");
+        panel.add(progressBar, "h 8, w 50 ,center,growx,wrap");
         panel.add(spacer3, "h 30 ,wrap");
         panel.add(tempclear, "w 98,h 40, center,wrap");
         panel.add(spacer2, "h 30, wrap");
         panel.add(binclear, "w 50,h 40, center,wrap");
         panel.add(LabelNotify, "center,wrap");
+        panel.add(jFileChooser,"center,growx,wrap");
 
         frame.pack();
         frame.setSize(500, 500);
@@ -118,4 +128,6 @@ class ApplicationInit extends JFrame {
 
     }
 
+
 }
+

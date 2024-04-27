@@ -14,5 +14,6 @@ public class MainFrame {
         UIManager.put("Button.foreground",new Color(1,1,1));
         UIManager.put("default",new Font(FlatRobotoFont.FAMILY,Font.PLAIN,13));
         ApplicationInit.runs();
+
     }
 }
