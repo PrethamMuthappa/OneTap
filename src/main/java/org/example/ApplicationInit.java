@@ -3,15 +3,16 @@ package org.example;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
-
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
 
 class ApplicationInit extends JFrame {
 
     static void runs() {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         JPanel panel = new JPanel(new MigLayout());
         JLabel title = new JLabel("ONE TAP");
         JLabel description = new JLabel("  A simple tool for clearing your systems cache/temporary files or trash files");
@@ -25,6 +26,24 @@ class ApplicationInit extends JFrame {
         JProgressBar progressBar = new JProgressBar();
         progressBar.setValue(0);
         progressBar.setBorderPainted(true);
+
+     JMenuBar menuBar = new JMenuBar();
+
+     JMenu menu = new JMenu("About");
+     menuBar.add(menu);
+
+     JButton button=new JButton("Github");
+     button.addActionListener(e -> {
+         try {
+             Desktop.getDesktop().browse(URI.create("https://github.com/PrethamMuthappa/SwingMigLayoutApp"));
+         } catch (IOException ex) {
+             throw new RuntimeException(ex);
+         }
+         System.out.println("clicked");
+     });
+
+     JMenuItem jMenuItem=new JMenuItem(button.getAction());
+     menu.add(jMenuItem);
 
         String os = System.getProperty("os.name").toLowerCase();
         System.out.println(os);
@@ -80,6 +99,7 @@ class ApplicationInit extends JFrame {
 
         frame.add(panel);
         frame.setResizable(false);
+        panel.add(menuBar,"left,wrap");
         panel.add(title, "center,wrap");
         panel.add(separator, "center,growx,wrap");
         panel.add(description, "center,wrap");
@@ -91,6 +111,7 @@ class ApplicationInit extends JFrame {
         panel.add(spacer2, "h 30, wrap");
         panel.add(binclear, "w 50,h 40, center,wrap");
         panel.add(LabelNotify, "center,wrap");
+
         frame.pack();
         frame.setSize(500, 500);
         frame.setVisible(true);
