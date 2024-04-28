@@ -59,10 +59,9 @@ class ApplicationInit extends JFrame {
 
 
         //Temp cleaner currently only for windows
-        tempclear.addActionListener(e -> {
-            Tempcleaner.cleartemp();
-        });
-
+//        tempclear.addActionListener(e -> {
+//            Tempcleaner.cleartemp();
+//        });
 
         //Bin cleaner for both window and Linux
         binclear.addActionListener(e -> {
@@ -71,7 +70,7 @@ class ApplicationInit extends JFrame {
                 String current = System.getProperty("user.home");
                 String relative = ".\\$Recycle.Bin";
                 File winfile = new File(current + File.separator + relative);
-                RecycleBinCleaner.recycle(winfile);
+                Cleaner.recycle(winfile);
                 for (int i = 0; i <= 100; i++) {
                     progressBar.setValue(i + 10);
                     try {
@@ -87,7 +86,7 @@ class ApplicationInit extends JFrame {
             String currentdir = System.getProperty("user.home");
             String relative = ".local/share/Trash/files";
             File file = new File(currentdir + File.separator + relative);
-            RecycleBinCleaner.recycle(file);
+            Cleaner.recycle(file);
 
             for (int i = 0; i <= 100; i++) {
                 progressBar.setValue(i + 10);
