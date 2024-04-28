@@ -1,6 +1,6 @@
 # one Tap
 
-one tap is a simple java swing tool to clear system cache and temporary files, created using FlatLaf theme and Miglayout   
+one tap is a simple java swing tool to clear system cache and temporary files, created using FlatLaf theme and Miglayout. This tool was created just for trying out/exploring swing Flatlaf and Miglayout , this tool offers no practicality and is generally no use.   
 
 Created using Java(21) swings with flatlaf for giving it a modern look and feel and Miglayout for layout manager  
 - Fairly easy tool to perform an easy task 
