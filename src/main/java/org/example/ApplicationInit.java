@@ -49,7 +49,6 @@ class ApplicationInit extends JFrame {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            System.out.println("clicked");
         });
 
         JMenuItem jMenuItem = new JMenuItem("GITHUB");
@@ -57,7 +56,6 @@ class ApplicationInit extends JFrame {
         menu.add(jMenuItem);
 
         String os = System.getProperty("os.name").toLowerCase();
-        System.out.println(os);
 
 
         //Temp cleaner currently only for windows
@@ -71,10 +69,8 @@ class ApplicationInit extends JFrame {
 
             if (os.contains("windows")) {
                 String current = System.getProperty("user.home");
-                System.out.println(current);
                 String relative = ".\\$Recycle.Bin";
                 File winfile = new File(current + File.separator + relative);
-                System.out.println(winfile);
                 RecycleBinCleaner.recycle(winfile);
                 for (int i = 0; i <= 100; i++) {
                     progressBar.setValue(i + 10);
@@ -89,10 +85,8 @@ class ApplicationInit extends JFrame {
             }
 
             String currentdir = System.getProperty("user.home");
-            System.out.println(currentdir);
             String relative = ".local/share/Trash/files";
             File file = new File(currentdir + File.separator + relative);
-            System.out.println(file);
             RecycleBinCleaner.recycle(file);
 
             for (int i = 0; i <= 100; i++) {
